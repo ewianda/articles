@@ -55,7 +55,12 @@ If you don't want to expose your storage account key in core-site.xml. You can a
 /usr/local/hadoop/bin/hadoop fs -ls / # if the default file system is set to wasb
 
 ```
+##Step 6. Modify spark-env.sh
+Modify $SPARK_HOME/etc/hadoop/hadoop-env.sh file to add these 2 jar files to Hadoop classpath at the end of the file.
 
+```
+export SPARK_CLASSPATH=$HADOOP_CLASSPATH:/usr/local/hadoop/share/hadoop/tools/lib/hadoop-azure-2.7.1.jar:/usr/local/hadoop/share/hadoop/tools/lib/azure-storage-2.0.0.jar
+```
 References:
 - [Official Apache documentation](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
 - [Why WASB makes Hadoop on Azure so very cool](https://blogs.msdn.microsoft.com/cindygross/2015/02/03/why-wasb-makes-hadoop-on-azure-so-very-cool/)
